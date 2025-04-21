@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion'
-import { FaArrowLeft, FaBehance, FaGit, FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
+import { FaArrowLeft, FaBehance, FaGithub, FaLinkedinIn } from 'react-icons/fa'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react';
 import Dialog from '../components/Dialog';
@@ -58,7 +58,7 @@ const ContactPage = () => {
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed top-20 left-4 sm:top-8 sm:left-8 z-40 flex items-center gap-2 text-white hover:text-orange-500 transition-colors"
+        className="fixed top-20 left-4 sm:top-8 sm:left-8 z-40 flex items-center gap-2 text-white hover:text-red-500 transition-colors"
       >
         <FaArrowLeft className="w-4 h-4" />
         <span className="hidden sm:inline">Back</span>
@@ -73,7 +73,7 @@ const ContactPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-orange-500 mb-4">Let's discuss your Project</h1>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-red-500 mb-4">Let's discuss your Project</h1>
               <p className="text-sm sm:text-base text-gray-400 mb-8">
                 There are many variations of passages of Lorem Ipsu available,
                 but the majority have suffered alte.
@@ -93,14 +93,14 @@ const ContactPage = () => {
 
               <div className="bg-gray-900/50 p-4 rounded-lg">
                 <h3 className="text-gray-400 mb-2">My Email:</h3>
-                <a href="mailto:naveensunny1581@mail.com" className="hover:text-orange-500 transition-colors">
+                <a href="mailto:naveensunny1581@mail.com" className="hover:text-red-500 transition-colors">
                 naveensunny1581@mail.com
                 </a>
               </div>
 
               <div className="bg-gray-900/50 p-4 rounded-lg">
                 <h3 className="text-gray-400 mb-2">Call Me Now:</h3>
-                <a href="tel:+919063869574" className="hover:text-orange-500 transition-colors">
+                <a href="tel:+919063869574" className="hover:text-red-500 transition-colors">
                   +91 9063869574
                 </a>
               </div>
@@ -113,13 +113,13 @@ const ContactPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <a href={process.env.NEXT_PUBLIC_BEHANCE_LINK} target='_blank' className="text-gray-400 hover:text-orange-500 transition-colors">
+              <a href={process.env.NEXT_PUBLIC_BEHANCE_LINK} target='_blank' className="text-gray-400 hover:text-red-500 transition-colors">
                 <FaBehance className="w-6 h-6" />
               </a>
-              <a href={process.env.NEXT_PUBLIC_GITHUB_LINK} target='_blank' className="text-gray-400 hover:text-orange-500 transition-colors">
+              <a href={process.env.NEXT_PUBLIC_GITHUB_LINK} target='_blank' className="text-gray-400 hover:text-red-500 transition-colors">
                 <FaGithub className="w-6 h-6" />
               </a>
-              <a href={process.env.NEXT_PUBLIC_LINKEDIN_LINK} target='_blank' className="text-gray-400 hover:text-orange-500 transition-colors">
+              <a href={process.env.NEXT_PUBLIC_LINKEDIN_LINK} target='_blank' className="text-gray-400 hover:text-red-500 transition-colors">
                 <FaLinkedinIn className="w-6 h-6" />
               </a>
             </motion.div>
@@ -139,7 +139,7 @@ const ContactPage = () => {
                 type="text"
                 name="name"
                 required
-                className="w-full bg-transparent border-b border-gray-800 py-2 focus:border-orange-500 outline-none transition-colors"
+                className="w-full bg-transparent border-b border-gray-800 py-2 focus:border-red-500 outline-none transition-colors"
               />
             </div>
 
@@ -149,7 +149,7 @@ const ContactPage = () => {
                 type="email"
                 name="email"
                 required
-                className="w-full bg-transparent border-b border-gray-800 py-2 focus:border-orange-500 outline-none transition-colors"
+                className="w-full bg-transparent border-b border-gray-800 py-2 focus:border-red-500 outline-none transition-colors"
               />
             </div>
 
@@ -158,7 +158,7 @@ const ContactPage = () => {
               <input
                 type="text"
                 name="location"
-                className="w-full bg-transparent border-b border-gray-800 py-2 focus:border-orange-500 outline-none transition-colors"
+                className="w-full bg-transparent border-b border-gray-800 py-2 focus:border-red-500 outline-none transition-colors"
               />
             </div>
 
@@ -170,7 +170,7 @@ const ContactPage = () => {
                   type="text"
                   name="budget"
                   required
-                  className="w-full bg-transparent border-b border-gray-800 py-2 focus:border-orange-500 outline-none transition-colors"
+                  className="w-full bg-transparent border-b border-gray-800 py-2 focus:border-red-500 outline-none transition-colors"
                 />
               </div>
               <div>
@@ -179,7 +179,7 @@ const ContactPage = () => {
                   type="text"
                   name="subject"
                   required
-                  className="w-full bg-transparent border-b border-gray-800 py-2 focus:border-orange-500 outline-none transition-colors"
+                  className="w-full bg-transparent border-b border-gray-800 py-2 focus:border-red-500 outline-none transition-colors"
                 />
               </div>
             </div>
@@ -190,7 +190,7 @@ const ContactPage = () => {
                 name="message"
                 rows="4"
                 required
-                className="w-full bg-transparent border-b border-gray-800 py-2 focus:border-orange-500 outline-none transition-colors"
+                className="w-full bg-transparent border-b border-gray-800 py-2 focus:border-red-500 outline-none transition-colors"
               ></textarea>
             </div>
 
@@ -198,7 +198,7 @@ const ContactPage = () => {
               type="submit"
               disabled={loading}
               whileHover={{ scale: loading ? 1 : 1.05 }}
-              className={`bg-orange-500 text-white px-8 py-3 rounded-lg hover:bg-orange-600 transition-colors ${
+              className={`bg-red-500 text-white px-8 py-3 rounded-lg hover:bg-red-600 transition-colors ${
                 loading ? 'opacity-70 cursor-not-allowed' : ''
               }`}
             >

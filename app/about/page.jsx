@@ -100,7 +100,7 @@ const AboutPage = () => {
         </div>
 
         {/* Info Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-16 mt-16 md:mt-32">
+        <div className="relative text-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-16 mt-16 md:mt-32">
           {/* Services */}
           <div className="space-y-4">
             <h3 className="text-lg uppercase tracking-wider">Services</h3>
@@ -157,15 +157,15 @@ const AboutPage = () => {
         </div>
 
         {/* Contact Section */}
-        <div className="mt-32 pb-16 grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="relative text-center mt-12 pb-16 grid grid-cols-1 md:grid-cols-2 gap-16">
           <div className="space-y-4">
             <h3 className="text-lg uppercase tracking-wider">Contact</h3>
-            <p className="text-gray-400">Nagarjunanaveen@gmail.com</p>
+            <p className="text-gray-400">naveensunny1581@gmail.com</p>
             <p className="text-gray-400">+91 9063869574</p>
           </div>
           <div className="space-y-4">
-            <h3 className="text-lg uppercase tracking-wider">Social</h3>
-            <div className="flex gap-4">
+            <h3 className="text-lg text-center uppercase tracking-wider">Social</h3>
+            <div className="flex justify-center gap-4">
               <a href="#" className="text-gray-400 hover:text-white"><FaInstagram /></a>
               <a href="#" className="text-gray-400 hover:text-white"><FaFacebookF /></a>
               <a href="#" className="text-gray-400 hover:text-white"><FaTwitter /></a>

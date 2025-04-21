@@ -108,7 +108,7 @@ const Projects = () => {
                 <motion.div
                   key={yearGroup.projects[0].title}
                   whileHover={{ scale: 1.01 }}
-                  className="relative w-full h-[200px] md:h-[750px] overflow-hidden rounded-xl"
+                  className="relative w-full h-[150px] md:h-[600px] overflow-hidden rounded-xl"
                 >
                   <Image
                     src={yearGroup.projects[0].image}
