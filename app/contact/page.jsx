@@ -15,7 +15,7 @@ const ContactPage = () => {
     setLoading(true);
     
     try {
-      const response = await fetch('https://formspree.io/f/myzerblo', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_FORMSPREE_LINK}`, {
         method: 'POST',
         body: new FormData(e.target),
         headers: {

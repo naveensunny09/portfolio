@@ -9,26 +9,54 @@ const Dialog = ({ isOpen, onClose, message, type = 'success' }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/50 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/70 backdrop-blur-sm"
           onClick={onClose}
         >
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-gray-900 p-6 rounded-lg shadow-xl max-w-sm w-full"
+            initial={{ scale: 0.95, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.95, opacity: 0, y: 20 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="bg-gray-900/95 p-8 rounded-xl shadow-2xl max-w-sm w-full flex flex-col items-center border border-gray-800"
             onClick={e => e.stopPropagation()}
           >
-            <div className={`bg-green-200 rounded-full text-2xl mb-4 ${type === 'success' ? 'text-green-500' : 'text-red-500'}`}>
+            <motion.div 
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.1 }}
+              className={`w-16 h-16 rounded-full flex items-center justify-center text-3xl mb-6 ${
+                type === 'success' 
+                  ? 'bg-green-500/10 text-green-500 border-2 border-green-500/20' 
+                  : 'bg-red-500/10 text-red-500 border-2 border-red-500/20'
+              }`}
+            >
               {type === 'success' ? '✓' : '✕'}
-            </div>
-            <p className="text-white mb-6">{message}</p>
-            <button
+            </motion.div>
+
+            <motion.p 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 }}
+              className="text-gray-200 text-center mb-8 text-lg"
+            >
+              {message}
+            </motion.p>
+
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
               onClick={onClose}
-              className="w-full bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition-colors"
+              className={`w-full py-3 px-6 rounded-lg font-medium transition-colors ${
+                type === 'success'
+                  ? 'bg-green-500 hover:bg-green-600 text-white'
+                  : 'bg-red-500 hover:bg-red-600 text-white'
+              }`}
             >
               Close
-            </button>
+            </motion.button>
           </motion.div>
         </motion.div>
       )}
