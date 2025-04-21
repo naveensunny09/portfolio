@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn, FaArrowLeft } from 'react-icons/fa'
