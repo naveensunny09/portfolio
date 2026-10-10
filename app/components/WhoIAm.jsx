@@ -102,7 +102,7 @@ const WhoIAm = ({ isInView }) => {
             {...fadeUp(isInView, 0.65)}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            href="/naveen-resume.pdf"
+            href="/Nagarjuna-Naveenchary.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 bg-white text-[#e50914] font-semibold px-6 py-3 rounded-xl hover:bg-[#e50914] hover:text-white transition-colors"
