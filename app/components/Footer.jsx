@@ -1,10 +1,11 @@
 'use client'
 import { FaLinkedinIn, FaBehance } from 'react-icons/fa'
 import { motion } from 'framer-motion'
+import { SOCIAL_LINKS } from './socialLinks'
 
 const socials = [
-  { href: process.env.NEXT_PUBLIC_LINKEDIN_LINK, icon: FaLinkedinIn, label: 'LinkedIn' },
-  { href: process.env.NEXT_PUBLIC_BEHANCE_LINK, icon: FaBehance, label: 'Behance' },
+  { href: SOCIAL_LINKS.linkedin, icon: FaLinkedinIn, label: 'LinkedIn' },
+  { href: SOCIAL_LINKS.behance, icon: FaBehance, label: 'Behance' },
 ]
 
 const Footer = () => {

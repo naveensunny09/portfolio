@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { FaBehance, FaDribbble, FaLinkedinIn } from 'react-icons/fa'
 import { useState } from 'react'
 import Dialog from './Dialog'
+import { SOCIAL_LINKS } from './socialLinks'
 
 const contactDetails = [
   { label: 'Address', value: 'Madhapur Hyderabad 500081' },
@@ -11,9 +12,9 @@ const contactDetails = [
 ]
 
 const socials = [
-  { href: process.env.NEXT_PUBLIC_BEHANCE_LINK, icon: FaBehance, label: 'Behance' },
-  { href: process.env.NEXT_PUBLIC_DRIBBBLE_LINK, icon: FaDribbble, label: 'Dribbble' },
-  { href: process.env.NEXT_PUBLIC_LINKEDIN_LINK, icon: FaLinkedinIn, label: 'LinkedIn' },
+  { href: SOCIAL_LINKS.behance, icon: FaBehance, label: 'Behance' },
+  { href: SOCIAL_LINKS.dribbble, icon: FaDribbble, label: 'Dribbble' },
+  { href: SOCIAL_LINKS.linkedin, icon: FaLinkedinIn, label: 'LinkedIn' },
 ]
 
 const inputClass =

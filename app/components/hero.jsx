@@ -12,6 +12,7 @@ import Projects from "./projects";
 import GradientShapes from "./GradientShapes";
 import Footer from "./Footer";
 import { smoothScrollTo } from "./smoothScroll";
+import { SOCIAL_LINKS } from "./socialLinks";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const fredericka = Fredericka_the_Great({ subsets: ["latin"], weight: "400" });
@@ -203,9 +204,9 @@ const Hero = () => {
         >
           <div className="w-px h-52 bg-neutral-600 hidden md:block mb-2"></div>
           {[
-            { href: process.env.NEXT_PUBLIC_BEHANCE_LINK, icon: FaBehance, label: "Behance" },
-            { href: process.env.NEXT_PUBLIC_LINKEDIN_LINK, icon: FaLinkedinIn, label: "LinkedIn" },
-            { href: process.env.NEXT_PUBLIC_DRIBBBLE_LINK, icon: FaDribbble, label: "Dribbble" },
+            { href: SOCIAL_LINKS.behance, icon: FaBehance, label: "Behance" },
+            { href: SOCIAL_LINKS.linkedin, icon: FaLinkedinIn, label: "LinkedIn" },
+            { href: SOCIAL_LINKS.dribbble, icon: FaDribbble, label: "Dribbble" },
           ].map(({ href, icon: Icon, label }) => (
             <a
               key={label}
