@@ -2,18 +2,11 @@
 import { motion } from 'framer-motion'
 
 const skillsData = [
-  {
-    name: "HTML — CSS",
-    delay: 0.3
-  },
-  {
-    name: "FLUTTER FLOW",
-    delay: 0.4
-  },
-  {
-    name: "FIGMA",
-    delay: 0.5
-  }
+  { name: "User Research", delay: 0.3 },
+  { name: "Interaction Design", delay: 0.4 },
+  { name: "Visual Styling", delay: 0.5 },
+  { name: "Usability Testing", delay: 0.6 },
+  { name: "User Interface", delay: 0.7 },
 ]
 
 const Skills = ({ isInView }) => {
@@ -37,15 +30,15 @@ const Skills = ({ isInView }) => {
 
         {/* Skills */}
         <div className="flex-col relative top-10 z-10  sm:mt-24 lg:mt-32">
-          {skillsData.map((skill, index) => (
+          {skillsData.map((skill) => (
             <motion.div
               key={skill.name}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: skill.delay }}
-              className="flex flex-col justify-center items-center gap-2 sm:gap-4 mb-4 sm:mb-6 lg:mb-8 bg-none"
+              className="flex flex-col justify-center items-center mb-1 lg:mb-2 bg-none"
             >
-              <h3 
+              <h3
                 className="outlined-text text-3xl sm:text-4xl lg:text-6xl font-semibold text-white text-center"
               >
                 {skill.name}

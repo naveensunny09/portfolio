@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { HiMenu, HiX } from 'react-icons/hi'
+import { smoothScrollTo } from './smoothScroll'
 
 const Navbar = () => {
   const pathname = usePathname()
@@ -26,8 +27,8 @@ const Navbar = () => {
           <Link href="/" className="flex items-center gap-2">
             <span className="text-xl md:text-2xl font-bold text-white">NN</span>
             <div className="text-[10px] md:text-xs text-gray-400">
-              <div>UI/UX</div>
-              <div>Designer</div>
+              <div>UI/UX Designer &amp;</div>
+              <div>Product Designer</div>
             </div>
           </Link>
 
@@ -69,15 +70,30 @@ const Navbar = () => {
 const NavLinks = ({ pathname }) => {
   const links = [
     { href: '/', label: 'HOME' },
-    { href: '/about', label: 'ABOUT' },
-    { href: '/contact', label: 'CONTACT' },
+    { href: '/#whoiam', label: 'ABOUT' },
+    { href: '/#projects', label: 'PROJECTS' },
+    { href: '/#contact', label: 'CONTACT' },
   ]
+
+  // On the home page, glide to the section instead of jumping
+  const handleClick = (e, href) => {
+    const [path, hash] = href.split('#')
+    if (pathname !== (path || '/')) return
+
+    const target = hash ? document.getElementById(hash) : null
+    if (hash && !target) return
+
+    e.preventDefault()
+    smoothScrollTo(target)
+    window.history.replaceState(null, '', target ? `#${hash}` : '/')
+  }
 
   return links.map(link => (
     <Link 
       key={link.href}
       href={link.href} 
-      className={`text-sm ${
+      onClick={(e) => handleClick(e, link.href)}
+      className={`text-sm font-medium tracking-wide ${
         pathname === link.href ? 'text-red-500' : 'text-white/90'
       } hover:text-red-600 transition-colors`}
     >

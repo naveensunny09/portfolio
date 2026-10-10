@@ -7,21 +7,29 @@ export default function LoadingAnimation() {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        const newProgress = prev + Math.random() * 10
-        if (newProgress >= 100) {
-          clearInterval(interval)
-          setTimeout(() => {
-            setLoading(false)
-          }, 800)
-          return 100
-        }
-        return newProgress
-      })
-    }, 200)
+    // Fill the bar continuously over a fixed duration with an ease-in-out curve
+    const duration = 3500
+    let start = null
+    let frame
+    let timeout
 
-    return () => clearInterval(interval)
+    const tick = (now) => {
+      if (start === null) start = now
+      const t = Math.min((now - start) / duration, 1)
+      const eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+      setProgress(eased * 100)
+      if (t < 1) {
+        frame = requestAnimationFrame(tick)
+      } else {
+        timeout = setTimeout(() => setLoading(false), 800)
+      }
+    }
+    frame = requestAnimationFrame(tick)
+
+    return () => {
+      cancelAnimationFrame(frame)
+      clearTimeout(timeout)
+    }
   }, [])
 
   return (
@@ -48,7 +56,7 @@ export default function LoadingAnimation() {
                   transition: { duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 },
                 }}
               >
-                <span className="text-9xl font-bold bg-gradient-to-r from-orange-500 via-white to-blue-500 text-transparent bg-clip-text bg-size-200 animate-gradient">
+                <span className="text-9xl font-bold text-[#FF0000]">
                   N
                 </span>
               </motion.div>
@@ -63,14 +71,14 @@ export default function LoadingAnimation() {
                   transition: { duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 },
                 }}
               >
-                <span className="text-9xl font-bold bg-gradient-to-r from-blue-500 via-white to-orange-500 text-transparent bg-clip-text bg-size-200 animate-gradient">
+                <span className="text-9xl font-bold text-white">
                   N
                 </span>
               </motion.div>
 
               {/* Gradient Effect */}
               <motion.div
-                className="absolute -inset-8 bg-gradient-to-r from-orange-500 to-blue-600 opacity-0 blur-2xl rounded-full"
+                className="absolute -inset-8 bg-gradient-to-r from-[#ff1a1a] to-red-600 opacity-0 blur-2xl rounded-full"
                 initial={{ opacity: 0 }}
                 animate={{
                   opacity: [0, 0.3, 0.7, 0.5],
@@ -82,7 +90,7 @@ export default function LoadingAnimation() {
 
             {/* Progress Bar */}
             <motion.div
-              className="w-48 -mt-12 -ml-6 h-[2px] bg-gray-800 rounded-full overflow-hidden"
+              className="w-48 -mt-12 -ml-6 h-[2px] bg-white/10 rounded-full overflow-hidden"
               initial={{ opacity: 0, width: 0 }}
               animate={{
                 opacity: 1,
@@ -91,15 +99,15 @@ export default function LoadingAnimation() {
               }}
             >
               <motion.div
-                className="h-full bg-orange-500"
+                className="h-full bg-[#ff1a1a] shadow-[0_0_8px_#ff1a1a]"
                 style={{ width: `${progress}%` }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0 }}
               />
             </motion.div>
 
             {/* Loading Text */}
             <motion.p
-              className="text-gray-500 text-sm mt-3 font-light tracking-widest"
+              className="text-white/70 text-sm mt-3 font-light tracking-widest"
               initial={{ opacity: 0,x: -10 }}
               animate={{
                 opacity: 1,

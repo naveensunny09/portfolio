@@ -1,116 +1,120 @@
 'use client'
 import { motion } from 'framer-motion'
 import Image from 'next/image';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600', '700'] });
+
+const fadeUp = (isInView, delay) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+  transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] },
+});
+
+const highlights = [
+  { value: 'UI/UX', label: 'Designer' },
+  { value: 'ECE', label: 'Engineering Background' },
+  { value: 'Human', label: 'Centered Approach' },
+];
 
 const WhoIAm = ({ isInView }) => {
-  const handleDownloadCV = () => {
-    // Create a link element
-    const link = document.createElement('a');
-    link.href = '/naveen-resume.pdf'; // Update this with your PDF file name
-    link.download = 'Naveen-Nagarjuna-Resume.pdf'; // The name that will appear when downloading
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: "20%" }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: "20%" }}
-      transition={{ duration: 1, delay: 0.2 }}
-      className="w-full flex-col xl:flex md:flex-row gap-8  mt-20"
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+      transition={{ duration: 0.8, delay: 0.1 }}
+      className={`${inter.className} w-full max-w-6xl mx-auto mt-20 pt-12 px-4 md:px-12`}
     >
-      <div className="flex-col md:flex w-full  lg:w-1/2">
       <motion.h2
-          initial={{ opacity: 0, x: -50 }}
-          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-6xl ml-2 md:ml-12 font-bold text-white mb-8"
-        >
-          WHO I <span  className="outlined-text text-stroke-4 text-stroke-red text-transparent font-bold">AM</span>
-        </motion.h2>
+        {...fadeUp(isInView, 0.2)}
+        className="text-5xl md:text-6xl font-bold text-white tracking-tight mb-12"
+      >
+        Who I <span className="outlined-text text-stroke-4 font-bold">A M</span>
+      </motion.h2>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        {/* Photo */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative rounded-2xl overflow-hidden flex justify-center items-center mb-4"
-          whileHover={{ scale: 1.02 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.7, delay: 0.25 }}
+          className="lg:col-span-5 relative"
         >
-          <Image
-            src="/Naveen-Nagarjuna.jpg"
-            alt="Naveen Nagarjuna"
-            width={1600}
-            height={ 900}
-            className="w-[600px] h-[500px] rounded-xl xl:w-[500px]   object-cover"
-          />
-        </motion.div>
-      </div>
-
-      <div className="xl:mt-24 lg:w-1/2">
-        
-        
-        <motion.h3
-          initial={{ opacity: 0, x: -50 }}
-          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-3xl font-bold text-white mb-6"
-        >
-          Naveen<br />
-          Nagarjuna
-        </motion.h3>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-        >
-          <p className="text-gray-400 mb-6 font-poppins">
-            Hi, my name is Naveen Nagarjuna, I am a UI/UX designer with a focus on interaction 
-            design & art direction. I love to create engaging, creative, and interactive app 
-            and websites. My aim is to visualize your ideas through my designing skills, by 
-            adding motion, I bring them life and make an impressive product.
-          </p>
-
-          <p className="text-gray-400 font-light mb-4">
-            I Love Design.
-          </p>
-
-          <p className="text-gray-400 mb-8">
-            Design is not a job, design is a mindset.<br />
-            Specially structured and logical thinking.
-          </p>
+          <div className="absolute -top-3 -left-3 w-full h-full border border-[#e50914]/60 rounded-2xl" />
+          <div className="relative overflow-hidden rounded-2xl group">
+            <Image
+              src="/Naveen-Nagarjuna.jpg"
+              alt="Naveen Nagarjuna"
+              width={1600}
+              height={900}
+              className="w-full h-[480px] object-cover grayscale transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+          </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="flex gap-4"
-        >
-
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            onClick={handleDownloadCV}
-            className="border border-white text-white px-6 py-3 rounded flex items-center gap-2 hover:bg-white hover:text-black transition-colors"
+        {/* Content */}
+        <div className="lg:col-span-7">
+          <motion.p
+            {...fadeUp(isInView, 0.3)}
+            className="text-[#e50914] text-sm font-semibold tracking-[0.25em] uppercase mb-3"
           >
-            <svg 
-              className="w-4 h-4" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" 
-              />
+            Hello, I&apos;m
+          </motion.p>
+
+          <motion.h3
+            {...fadeUp(isInView, 0.35)}
+            className="text-5xl md:text-6xl font-bold leading-[1.05] tracking-tight mb-6"
+          >
+            <span className="text-[#e50914]">Naveen</span>{' '}
+            <span className="text-white">Nagarjuna</span>
+          </motion.h3>
+
+          <motion.div {...fadeUp(isInView, 0.45)} className="space-y-4 max-w-xl mb-8">
+            <p className="text-white/80 text-lg leading-relaxed">
+              A UI/UX designer with a background in Electronics and Communication Engineering,
+              crafting thoughtful, human-centered digital experiences.
+            </p>
+            <p className="text-neutral-400 leading-relaxed">
+              I turn complex problems into simple, meaningful solutions by combining creativity,
+              empathy, technology and problem-solving — designing experiences that are intuitive,
+              visually engaging and purposeful.
+            </p>
+            <p className="text-neutral-300 leading-relaxed border-l-2 border-[#e50914] pl-4 italic">
+              Good design is more than how something looks — it&apos;s how it works, how it feels,
+              and the impact it creates in people&apos;s lives.
+            </p>
+          </motion.div>
+
+          <motion.div
+            {...fadeUp(isInView, 0.55)}
+            className="grid grid-cols-3 gap-4 max-w-xl mb-10 border-t border-white/10 pt-6"
+          >
+            {highlights.map((item) => (
+              <div key={item.value}>
+                <p className="text-white text-xl md:text-2xl font-bold">{item.value}</p>
+                <p className="text-neutral-500 text-xs md:text-sm mt-1">{item.label}</p>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.a
+            {...fadeUp(isInView, 0.65)}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            href="/naveen-resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 bg-white text-[#e50914] font-semibold px-6 py-3 rounded-xl hover:bg-[#e50914] hover:text-white transition-colors"
+          >
+            View Resume
+            <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14m-6-6l6 6-6 6" />
             </svg>
-            Download CV
-          </motion.button>
-        </motion.div>
+          </motion.a>
+        </div>
       </div>
-    </motion.div>
+    </motion.section>
   )
 }
 
